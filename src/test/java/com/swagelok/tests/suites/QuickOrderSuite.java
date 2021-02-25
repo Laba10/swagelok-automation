@@ -19,8 +19,7 @@ public class QuickOrderSuite {
 
     @BeforeClass
     public static void login(){
-        DriverFactory driverFactory = new DriverFactory();
-        driverFactory.openLoginPage();
+        DriverFactory.openLoginPage();
         LoginSuite loginSuite = new LoginSuite();
         loginSuite.swagelokLogin();
     }

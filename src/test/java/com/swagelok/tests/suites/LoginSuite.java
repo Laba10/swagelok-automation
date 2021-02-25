@@ -4,7 +4,6 @@ import com.codeborne.selenide.junit.ScreenShooter;
 import com.swagelok.tests.DriverFactory;
 import com.swagelok.tests.steps.LoginPageSteps;
 import org.junit.*;
-import org.junit.runners.Parameterized;
 
 import static com.codeborne.selenide.WebDriverRunner.closeWebDriver;
 
@@ -17,8 +16,7 @@ public class LoginSuite {
 
     @BeforeClass
     public static void openLoginPage(){
-        DriverFactory driverFactory = new DriverFactory();
-        driverFactory.openLoginPage();
+        DriverFactory.openLoginPage();
     }
 
     @Test
@@ -38,7 +36,7 @@ public class LoginSuite {
 
     @Test
     public void loginWithSelectionSSC(){
-        String email = "automation02@zaelab.com";
+        String email = "automation03@zaelab.com";
         String pass = "12341234";
 
         LoginPageSteps loginPageSteps = new LoginPageSteps();

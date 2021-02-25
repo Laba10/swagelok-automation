@@ -15,8 +15,7 @@ public class NegativeLoginSuite {
 
     @BeforeClass
     public static void openLoginPage(){
-        DriverFactory driverFactory = new DriverFactory();
-        driverFactory.openLoginPage();
+        DriverFactory.openLoginPage();
     }
 
     //    TO DO: Need to implement verification for HTML5 validation message

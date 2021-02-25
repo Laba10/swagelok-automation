@@ -18,4 +18,7 @@ public class HeaderPageElements {
     public static final By VIEW_CART_BUTTON_CART_POPUP_XPATH = By.xpath("//a[contains(text(), 'View Cart')]");
     public static final By COUNT_OF_PRODUCTS_MINI_CART_ICON_XPATH = By.xpath("//span[@class='js-mini-cart-count']");
 
+    public static final By SEARCH_FIELD_XPATH = By.xpath("//input[@id='js-site-search-input']");
+    public static final By SEARCH_BUTTON_XPATH = By.xpath("//button[@class='s-site-search__cta js_search_button']");
+
 }

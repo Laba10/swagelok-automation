@@ -3,7 +3,6 @@ package com.swagelok.pages;
 import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.SelenideElement;
 import com.swagelok.models.QuickOrderProduct;
-import com.swagelok.page_elements.PopupPageElements;
 
 import java.util.ArrayList;
 
@@ -21,9 +20,7 @@ abstract class OverallPage {
     }
 
     public  String getLink(){
-        String link = url();
-        System.out.println("Trying to get a link:)");
-        return link ;
+        return url();
     }
 
     public void openLoginPage(){
@@ -44,6 +41,15 @@ abstract class OverallPage {
 
     public void openCartPage(){
         open("https://products.qa.swagelok.com/en/cart");
+    }
+
+    public void typeSearchValue(String value){
+        $(SEARCH_FIELD_XPATH).shouldBe(Condition.visible);
+        $(SEARCH_FIELD_XPATH).sendKeys(value);
+    }
+
+    public void clickSearchButton(){
+        $(SEARCH_BUTTON_XPATH).click();
     }
 
     public void openQuickOrderWindow(){
@@ -109,7 +115,7 @@ abstract class OverallPage {
     }
 
     public Boolean checkIfCartIsEmpty(){
-        Boolean cartIsEmpty;
+        boolean cartIsEmpty;
         if(getCountOfProductsInCart().equals("0")){
             cartIsEmpty = true;
         } else {

@@ -12,7 +12,8 @@ import org.junit.runners.Suite;
         NegativeLoginSuite.class,
         QuickOrderSuite.class,
         NegativeQuickOrderSuite.class,
-        CartSuite.class
+        CartSuite.class,
+        SearchSuite.class
 })
 
 public class JunitRunner {
