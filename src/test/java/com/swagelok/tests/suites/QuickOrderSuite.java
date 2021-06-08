@@ -31,7 +31,7 @@ public class QuickOrderSuite {
         quickOrderPageSteps.openQuickOrderPageViaForm();
 
         Assert.assertEquals("Current url: " + url()+ " is not equal with Quick Order page URL",
-                "https://products.qa.swagelok.com/en/quickOrder", url());
+                "https://products.qa.swagelok.com/en/quick-add", url());
     }
 
 //  Verify that user is able to add products from Quick Order page.

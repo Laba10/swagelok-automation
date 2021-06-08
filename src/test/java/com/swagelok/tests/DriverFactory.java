@@ -1,6 +1,6 @@
 package com.swagelok.tests;
 
-import com.codeborne.selenide.Selenide;
+import com.swagelok.pages.LoginPage;
 import org.junit.Assert;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.WebDriverWait;
@@ -21,12 +21,13 @@ public class DriverFactory {
         return driver;
     }
 
-
     public static void openLoginPage(){
-        timeout = 4000;
+        timeout = 6000;
         browser = "chrome";
 //        browserSize = "780x950";
         open("https://products.qa.swagelok.com/en/login");
+        LoginPage loginPage = new LoginPage();
+        loginPage.acceptCookiePolicy();
     }
 
     public static void openRegistrationPage(){

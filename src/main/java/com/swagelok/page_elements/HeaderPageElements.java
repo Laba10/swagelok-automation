@@ -7,7 +7,7 @@ public class HeaderPageElements {
     public static final By LOGOUT_BUTTON_XPATH = By.xpath("//a[@href='/en/logout']");
 
     public static final By QUICK_ORDER_BUTTON_XPATH = By.xpath("//button[@data-target='#miniQuickOrderFormWrapper']");
-    public static final By QUICK_ORDER_FORM_BUTTON_XPATH = By.xpath("//a[contains(text(),'Quick Order Form')]");
+    public static final By QUICK_ORDER_FORM_BUTTON_XPATH = By.xpath("//a[contains(text(),'Quick Add Form')]");
     public static final By QUICK_ORDER_FORM_ROW_XPATH = By.xpath("//div[@class='s-form-row']");
     public static final By QUICK_ORDER_FORM_PART_NUMBER_XPATH = By.xpath(".//input[@class='form-control js-input-part']");
     public static final By QUICK_ORDER_FORM_QTY_XPATH = By.xpath(".//input[@class='form-control js-input-qty']");

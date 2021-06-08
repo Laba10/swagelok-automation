@@ -12,4 +12,5 @@ public class LoginPageElements {
     public static final By CONTINUE_LOG_IN_BUTTON_XPATH = By.xpath("//button[contains(text(), 'Continue Log In')]");
     public static final By CREDENTIAL_ERROR_MESSAGE_XPATH = By.xpath("//div[@class='alert alert-danger alert-dismissable getAccAlert']");
     public static final By FORGOT_PASSWORD_LINK_XPATH = By.xpath("//a[@class='js-password-forgotten']");
+    public static final By COOKIE_POLICY_ACCEPT = By.xpath("//div[@class='js-cookie-notification-accept s-footer__cookie-disclaimer-close']");
 }

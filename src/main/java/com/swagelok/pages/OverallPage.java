@@ -9,9 +9,14 @@ import java.util.ArrayList;
 import static com.codeborne.selenide.Selenide.*;
 import static com.codeborne.selenide.WebDriverRunner.url;
 import static com.swagelok.page_elements.HeaderPageElements.*;
+import static com.swagelok.page_elements.LoginPageElements.COOKIE_POLICY_ACCEPT;
 import static com.swagelok.page_elements.PopupPageElements.*;
 
 abstract class OverallPage {
+
+    public void acceptCookiePolicy(){
+        $(COOKIE_POLICY_ACCEPT).click();
+    }
 
     public String logout(){
         $(ACCOUNT_BUTTON_XPATH).click();
@@ -116,11 +121,7 @@ abstract class OverallPage {
 
     public Boolean checkIfCartIsEmpty(){
         boolean cartIsEmpty;
-        if(getCountOfProductsInCart().equals("0")){
-            cartIsEmpty = true;
-        } else {
-            cartIsEmpty = false;
-        }
+        cartIsEmpty = getCountOfProductsInCart().equals("0");
         return cartIsEmpty;
     }
 

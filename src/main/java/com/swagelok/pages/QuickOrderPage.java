@@ -3,15 +3,11 @@ package com.swagelok.pages;
 import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.SelenideElement;
 import com.swagelok.models.QuickOrderProduct;
-import com.swagelok.page_elements.QuickOrderPageElements;
-import org.openqa.selenium.By;
 
 import java.io.File;
 import java.util.ArrayList;
 
 import static com.codeborne.selenide.Selenide.*;
-import static com.swagelok.page_elements.HeaderPageElements.*;
-import static com.swagelok.page_elements.HeaderPageElements.QUICK_ORDER_FORM_QTY_XPATH;
 import static com.swagelok.page_elements.PopupPageElements.ADD_TO_CART_POPUP_XPATH;
 import static com.swagelok.page_elements.PopupPageElements.MESSAGE_SUCCESSFULLY_ADDED_PRODUCTS_XPATH;
 import static com.swagelok.page_elements.QuickOrderPageElements.*;
@@ -45,7 +41,7 @@ public class QuickOrderPage extends OverallPage {
     public Boolean checkAddToCartPopup(){
         Boolean addToCartPopupAppeared;
         $(ADD_TO_CART_POPUP_XPATH).shouldBe(Condition.visible);
-        if($(ADD_TO_CART_POPUP_XPATH).isDisplayed() == true){
+        if($(ADD_TO_CART_POPUP_XPATH).isDisplayed()){
             addToCartPopupAppeared = true;
         } else {
             addToCartPopupAppeared = false;

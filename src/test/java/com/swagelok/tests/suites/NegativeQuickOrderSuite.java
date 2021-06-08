@@ -33,7 +33,7 @@ public class NegativeQuickOrderSuite {
         QuickOrderPageSteps quickOrderPageSteps = new QuickOrderPageSteps();
         quickOrderPageSteps.fillQuickOrderForm(product);
 
-        Assert.assertFalse("Add to Cart button is active when rows are clean", quickOrderPageSteps.checkAddToCartButtonForm());
+        Assert.assertFalse("Add to Cart button is active when page does`nt contain valid products", quickOrderPageSteps.checkAddToCartButtonForm());
 
         Assert.assertTrue("Message for invalid Product number is absent", quickOrderPageSteps.invalidProductMessagePresent() );
     }
