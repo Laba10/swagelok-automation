@@ -3,6 +3,7 @@ package com.swagelok.pages;
 import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.SelenideElement;
 import com.swagelok.models.QuickOrderProduct;
+import com.swagelok.utils.EnvFactory;
 
 import java.util.ArrayList;
 
@@ -14,7 +15,9 @@ import static com.swagelok.page_elements.PopupPageElements.*;
 
 abstract class OverallPage {
 
-    public void acceptCookiePolicy(){
+    public String homeUrl = EnvFactory.getMainUrl();
+
+    public static void acceptCookiePolicy(){
         $(COOKIE_POLICY_ACCEPT).click();
     }
 
@@ -29,23 +32,23 @@ abstract class OverallPage {
     }
 
     public void openLoginPage(){
-        open("https://products.qa.swagelok.com/en/login");
+        open(homeUrl + "login");
     }
 
     public void openRegistrationPage(){
-        open("https://products.qa.swagelok.com/en/register");
+        open(homeUrl + "register");
     }
 
     public void openQuickOrderPage(){
-        open("https://products.qa.swagelok.com/en/quickOrder");
+        open(homeUrl + "quickOrder");
     }
 
     public void openAllProductsPage(){
-        open("https://products.qa.swagelok.com/en/");
+        open(homeUrl);
     }
 
     public void openCartPage(){
-        open("https://products.qa.swagelok.com/en/cart");
+        open(homeUrl + "cart");
     }
 
     public void typeSearchValue(String value){

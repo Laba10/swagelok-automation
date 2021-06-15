@@ -1,8 +1,9 @@
 package com.swagelok.tests.suites;
 
 import com.codeborne.selenide.junit.ScreenShooter;
-import com.swagelok.tests.DriverFactory;
 import com.swagelok.tests.steps.RegistrationPageSteps;
+import com.swagelok.utils.DriverFactory;
+import com.swagelok.utils.EnvFactory;
 import org.junit.*;
 
 import static com.codeborne.selenide.WebDriverRunner.*;
@@ -11,11 +12,12 @@ public class RegistrationSuite {
 
     @Rule
     public ScreenShooter screenShooter = ScreenShooter.failedTests();
+    private String homeUrl = EnvFactory.getMainUrl();
 
     @BeforeClass
     public static void openRegistrationPage(){
-        DriverFactory driverFactory = new DriverFactory();
-        driverFactory.openRegistrationPage();
+        DriverFactory.setTestParameters();
+        RegistrationPageSteps.openRegistrationPage();
     }
 
     @Test
@@ -25,7 +27,7 @@ public class RegistrationSuite {
         String message = registrationPageSteps.submitRegistration();
 
         Assert.assertEquals("Current URL:" + url() +" is not equal with url about success registration",
-                "https://products.qa.swagelok.com/en/register/success", url());
+                homeUrl + "register/success", url());
 
         Assert.assertEquals("Current Head line message: " + message + " is not equal with expected",
                 "\n" +

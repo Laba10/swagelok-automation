@@ -2,15 +2,16 @@ package com.swagelok.tests.suites;
 
 import com.codeborne.selenide.junit.ScreenShooter;
 import com.swagelok.models.QuickOrderProduct;
-import com.swagelok.tests.DriverFactory;
 import com.swagelok.tests.steps.CartPageSteps;
+import com.swagelok.tests.steps.LoginPageSteps;
+import com.swagelok.utils.DriverFactory;
 import org.junit.*;
 
 import java.util.ArrayList;
 
 import static com.codeborne.selenide.WebDriverRunner.closeWebDriver;
 
-public class CartSuite {
+public class CartSuite{
 
     @Rule
     public ScreenShooter screenShooter = ScreenShooter.failedTests();
@@ -18,9 +19,8 @@ public class CartSuite {
 
     @BeforeClass
     public static void login(){
-        DriverFactory.openLoginPage();
-        LoginSuite loginSuite = new LoginSuite();
-        loginSuite.swagelokLogin();
+        DriverFactory.setTestParameters();
+        LoginPageSteps.fastLogin();
         CartPageSteps cartPageSteps = new CartPageSteps();
         cartPageSteps.cancelCart();
     }

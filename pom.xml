@@ -32,6 +32,9 @@
                     <includes>
                     <include>JunitRunner</include>
                 </includes>
+                    <systemPropertyVariables>
+                        <test.environment>${env.NAME}</test.environment>
+                    </systemPropertyVariables>
 
                 <!--                    <argLine>-->
 <!--                        -javaagent:"${settings.localRepository}/org/aspectj/aspectjweaver/${aspectj.version}/aspectjweaver-${aspectj.version}.jar"-->

@@ -1,9 +1,11 @@
 package com.swagelok.tests.suites;
 
 import com.codeborne.selenide.junit.ScreenShooter;
-import com.swagelok.tests.DriverFactory;
+import com.swagelok.tests.steps.LoginPageSteps;
 import com.swagelok.tests.steps.SearchPageSteps;
 import com.swagelok.tests.steps.VariantPDPSteps;
+import com.swagelok.utils.DriverFactory;
+import com.swagelok.utils.EnvFactory;
 import org.junit.*;
 
 import static com.codeborne.selenide.WebDriverRunner.closeWebDriver;
@@ -12,13 +14,12 @@ public class SearchSuite {
 
     @Rule
     public ScreenShooter screenShooter = ScreenShooter.failedTests();
-
+    private String homeUrl = EnvFactory.getMainUrl();
 
     @BeforeClass
     public static void login() {
-        DriverFactory.openLoginPage();
-        LoginSuite loginSuite = new LoginSuite();
-        loginSuite.swagelokLogin();
+        DriverFactory.setTestParameters();
+        LoginPageSteps.fastLogin();
     }
 
 //    Check that user is redirecting to Search page after search something
@@ -99,7 +100,7 @@ public class SearchSuite {
         String link = searchPageSteps.getLink();
 
         Assert.assertTrue("User is not on the search page.",
-                link.startsWith("https://products.qa.swagelok.com/en/search/?text="));
+                link.startsWith(homeUrl + "search/?text="));
 
         Assert.assertTrue("No results message is invalid",
                 searchPageSteps.getNoResultsMessage().startsWith("No results were found matching your search for:"));

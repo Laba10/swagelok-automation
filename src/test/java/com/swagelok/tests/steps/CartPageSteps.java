@@ -6,7 +6,7 @@ import com.swagelok.pages.CartPage;
 
 import java.util.ArrayList;
 
-public class CartPageSteps {
+public class CartPageSteps extends SharedSteps{
     
     CartPage cartPage = new CartPage();
     
@@ -15,7 +15,7 @@ public class CartPageSteps {
     }
 
     public void cancelCart() {
-        if(cartIsEmpty() == true){
+        if(cartIsEmpty()){
             System.out.println("Cart is empty. No need to cancel cart.");
         } else {
             cartPage.clearCart();

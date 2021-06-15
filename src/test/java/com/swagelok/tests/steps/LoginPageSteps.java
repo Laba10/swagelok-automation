@@ -2,7 +2,7 @@ package com.swagelok.tests.steps;
 
 import com.swagelok.pages.LoginPage;
 
-public class LoginPageSteps {
+public class LoginPageSteps extends SharedSteps{
     private LoginPage loginPage = new LoginPage();
 
     public void login(String email, String pass){

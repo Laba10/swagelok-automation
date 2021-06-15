@@ -62,6 +62,11 @@ public class SearchPage extends OverallPage{
         return null;
     }
 
+    public boolean verifySearchLink(String searchValue){
+        String expectedLink = homeUrl + "search/?text=" + searchValue;
+        return getLink().equals(expectedLink);
+    }
+
     public String getSuggestedSearchValue(){
         return $(SEARCH_PAGE_SUGGESTED_VALUE_XPATH).getText();
     }

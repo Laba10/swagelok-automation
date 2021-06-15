@@ -1,8 +1,10 @@
 package com.swagelok.tests.suites;
 
 import com.codeborne.selenide.junit.ScreenShooter;
-import com.swagelok.tests.DriverFactory;
+import com.swagelok.pages.LoginPage;
 import com.swagelok.tests.steps.LoginPageSteps;
+import com.swagelok.utils.DriverFactory;
+import com.swagelok.utils.EnvFactory;
 import org.junit.*;
 
 import static com.codeborne.selenide.WebDriverRunner.closeWebDriver;
@@ -11,11 +13,13 @@ public class NegativeLoginSuite {
 
     @Rule
     public ScreenShooter screenShooter = ScreenShooter.failedTests();
-
+    private String homeUrl = EnvFactory.getMainUrl();
 
     @BeforeClass
     public static void openLoginPage(){
-        DriverFactory.openLoginPage();
+        DriverFactory.setTestParameters();
+        LoginPageSteps.openLoginPage();
+        LoginPage.acceptCookiePolicy();
     }
 
     //    TO DO: Need to implement verification for HTML5 validation message
@@ -38,8 +42,7 @@ public class NegativeLoginSuite {
         String message = loginPageSteps.checkErrorMessages();
 
         Assert.assertEquals("User is transferred from login page to: '"+link+"'",
-                "https://products.qa.swagelok.com/en/login?error=true",
-                link);
+                homeUrl + "login?error=true", link);
         Assert.assertEquals("Validation message is absent or contains invalid text","Your username or password was incorrect.",message);
     }
 

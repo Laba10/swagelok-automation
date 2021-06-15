@@ -5,7 +5,7 @@ import com.swagelok.pages.QuickOrderPage;
 
 import java.util.ArrayList;
 
-public class QuickOrderPageSteps {
+public class QuickOrderPageSteps extends SharedSteps{
     private QuickOrderPage quickOrderPage = new QuickOrderPage();
 
     public void resetQuickOrderPage(){
@@ -27,7 +27,7 @@ public class QuickOrderPageSteps {
 
     public String verifyIfProductsWereAddedToCart(){
         String qtyProducts = null;
-       if (quickOrderPage.checkAddToCartPopup() == true){
+       if (quickOrderPage.checkAddToCartPopup()){
            qtyProducts = quickOrderPage.countOfSuccessfullyAddedProducts();
        }
        return qtyProducts;
@@ -39,15 +39,15 @@ public class QuickOrderPageSteps {
 
     public Boolean verifyThatQuickOrderRowsClean(){
         Boolean allRowsClean = true;
-        if (quickOrderPage.checkThatPartNumberRowsEmpty() != true){
+        if (!quickOrderPage.checkThatPartNumberRowsEmpty()){
             allRowsClean = false;
         }
 
-        if (quickOrderPage.qtyFieldsEmpty() != true){
+        if (!quickOrderPage.qtyFieldsEmpty()){
             allRowsClean = false;
         }
 
-        if (quickOrderPage.notesFieldsEmpty() != true){
+        if (!quickOrderPage.notesFieldsEmpty()){
             allRowsClean = false;
         }
         return  allRowsClean;

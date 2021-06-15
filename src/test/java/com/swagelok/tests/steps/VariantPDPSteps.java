@@ -2,7 +2,7 @@ package com.swagelok.tests.steps;
 
 import com.swagelok.pages.VariantProductDetailsPage;
 
-public class VariantPDPSteps {
+public class VariantPDPSteps extends SharedSteps {
     VariantProductDetailsPage variantProductDetailsPage = new VariantProductDetailsPage();
 
     public String getPartNumberOfCurrentProduct(){

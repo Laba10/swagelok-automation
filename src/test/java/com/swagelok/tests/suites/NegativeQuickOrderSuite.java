@@ -2,8 +2,9 @@ package com.swagelok.tests.suites;
 
 import com.codeborne.selenide.junit.ScreenShooter;
 import com.swagelok.models.QuickOrderProduct;
-import com.swagelok.tests.DriverFactory;
+import com.swagelok.tests.steps.LoginPageSteps;
 import com.swagelok.tests.steps.QuickOrderPageSteps;
+import com.swagelok.utils.DriverFactory;
 import org.junit.*;
 
 import java.util.ArrayList;
@@ -18,9 +19,8 @@ public class NegativeQuickOrderSuite {
 
     @BeforeClass
     public static void login(){
-        DriverFactory.openLoginPage();
-        LoginSuite loginSuite = new LoginSuite();
-        loginSuite.swagelokLogin();
+        DriverFactory.setTestParameters();
+        LoginPageSteps.fastLogin();
     }
 
 //    Check that Add to Cart button is disabled when Form contains only invalid products

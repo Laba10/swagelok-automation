@@ -25,10 +25,13 @@ etc.
 
 **For tests run**
 
-from commandline: mvn clean test site
+from commandline: mvn clean test -Denv.NAME=qa
 - clean - delete old compiled code and artifacts
 - test - compile and run tests
 - mvn clean test - clean and run
+- "-Denv.NAME=qa" - selects env where tests should be executed(Potential values: "qa", "staging", "prod")
+Tests will be executed on QA env if env.NAME value was not specified.
+
 
 from Maven block in IntelliJ IDEA:
 - open lifecycle section-> select clean, test 

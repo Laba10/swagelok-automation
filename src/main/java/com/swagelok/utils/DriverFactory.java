@@ -1,13 +1,11 @@
-package com.swagelok.tests;
+package com.swagelok.utils;
 
-import com.swagelok.pages.LoginPage;
 import org.junit.Assert;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import static com.codeborne.selenide.Configuration.browser;
 import static com.codeborne.selenide.Configuration.timeout;
-import static com.codeborne.selenide.Selenide.open;
 import static com.codeborne.selenide.WebDriverRunner.closeWebDriver;
 
 public class DriverFactory {
@@ -21,19 +19,10 @@ public class DriverFactory {
         return driver;
     }
 
-    public static void openLoginPage(){
+    public static void setTestParameters(){
         timeout = 6000;
         browser = "chrome";
 //        browserSize = "780x950";
-        open("https://products.qa.swagelok.com/en/login");
-        LoginPage loginPage = new LoginPage();
-        loginPage.acceptCookiePolicy();
-    }
-
-    public static void openRegistrationPage(){
-        timeout = 4000;
-        browser = "chrome";
-        open("https://products.qa.swagelok.com/en/register");
     }
 
     public static void close(){

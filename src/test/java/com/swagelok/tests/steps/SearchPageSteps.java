@@ -21,8 +21,7 @@ public class SearchPageSteps {
     }
 
     public boolean compareLinks(String searchValue){
-        String expectedLink = "https://products.qa.swagelok.com/en/search/?text=" + searchValue;
-        return searchPage.getLink().equals(expectedLink);
+        return searchPage.verifySearchLink(searchValue);
     }
 
     public boolean searchTabsPresent(){

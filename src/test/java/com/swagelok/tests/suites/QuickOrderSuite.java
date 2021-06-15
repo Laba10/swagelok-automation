@@ -2,8 +2,10 @@ package com.swagelok.tests.suites;
 
 import com.codeborne.selenide.junit.ScreenShooter;
 import com.swagelok.models.QuickOrderProduct;
-import com.swagelok.tests.DriverFactory;
+import com.swagelok.tests.steps.LoginPageSteps;
 import com.swagelok.tests.steps.QuickOrderPageSteps;
+import com.swagelok.utils.DriverFactory;
+import com.swagelok.utils.EnvFactory;
 import org.junit.*;
 
 import java.util.ArrayList;
@@ -15,13 +17,12 @@ public class QuickOrderSuite {
 
     @Rule
     public ScreenShooter screenShooter = ScreenShooter.failedTests();
-
+    private String homeUrl = EnvFactory.getMainUrl();
 
     @BeforeClass
     public static void login(){
-        DriverFactory.openLoginPage();
-        LoginSuite loginSuite = new LoginSuite();
-        loginSuite.swagelokLogin();
+        DriverFactory.setTestParameters();
+        LoginPageSteps.fastLogin();
     }
 
 //Verify that user is redirecting to page after clicking on the Quick Order Form button
@@ -31,7 +32,7 @@ public class QuickOrderSuite {
         quickOrderPageSteps.openQuickOrderPageViaForm();
 
         Assert.assertEquals("Current url: " + url()+ " is not equal with Quick Order page URL",
-                "https://products.qa.swagelok.com/en/quick-add", url());
+                homeUrl + "quick-add", url());
     }
 
 //  Verify that user is able to add products from Quick Order page.

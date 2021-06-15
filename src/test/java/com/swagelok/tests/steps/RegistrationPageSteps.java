@@ -2,7 +2,7 @@ package com.swagelok.tests.steps;
 
 import com.swagelok.pages.RegistrationPage;
 
-public class RegistrationPageSteps {
+public class RegistrationPageSteps extends  SharedSteps{
     private RegistrationPage registrationPage = new RegistrationPage();
 
     public void populateRegistrationFields() {
