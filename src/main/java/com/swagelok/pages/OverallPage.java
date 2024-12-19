@@ -10,7 +10,6 @@ import java.util.ArrayList;
 import static com.codeborne.selenide.Selenide.*;
 import static com.codeborne.selenide.WebDriverRunner.url;
 import static com.swagelok.page_elements.HeaderPageElements.*;
-import static com.swagelok.page_elements.LoginPageElements.COOKIE_POLICY_ACCEPT;
 import static com.swagelok.page_elements.PopupPageElements.*;
 
 abstract class OverallPage {
@@ -18,7 +17,8 @@ abstract class OverallPage {
     public String homeUrl = EnvFactory.getMainUrl();
 
     public static void acceptCookiePolicy(){
-        $(COOKIE_POLICY_ACCEPT).click();
+        $(ACCEPT_COOKIE_XPATH).click();
+        System.out.println("Cookie consent accepted");
     }
 
     public String logout(){
@@ -67,7 +67,13 @@ abstract class OverallPage {
     }
 
     public void clickQuickOrderFormButton(){
-        $(QUICK_ORDER_FORM_BUTTON_XPATH).click();
+//        $(QUICK_ORDER_FORM_BUTTON_XPATH).shouldBe(Condition.clickable);
+        if ($(QUICK_ORDER_FORM_BUTTON_XPATH).isEnabled()) {
+            $(QUICK_ORDER_FORM_BUTTON_XPATH).click();
+        } else{
+            $(QUICK_ORDER_FORM_PART_NUMBER_XPATH).click();
+            $(QUICK_ORDER_FORM_BUTTON_XPATH).click();
+        }
     }
 
     public void populateDataInQuickOrderForm(ArrayList<QuickOrderProduct> listProducts){
@@ -76,13 +82,13 @@ abstract class OverallPage {
                 QuickOrderProduct productRow = listProducts.get(i);
                 SelenideElement e = $$(QUICK_ORDER_FORM_ROW_XPATH).get(i);
                 e.find(QUICK_ORDER_FORM_PART_NUMBER_XPATH).sendKeys(productRow.getPartNumber());
-                e.find(QUICK_ORDER_FORM_QTY_XPATH).clear();
-                e.find(QUICK_ORDER_FORM_QTY_XPATH).sendKeys(productRow.getQty());
+                e.find(QUICK_ORDER_FORM_QTY_XPATH).setValue(productRow.getQty());
         }
     }
 
+
     public void clickAddToCartQuickOrder(){
-        $(ADD_TO_CART_BUTTON_QUICK_ORDER_FORM).shouldBe(Condition.enabled);
+        $(ADD_TO_CART_BUTTON_QUICK_ORDER_FORM).shouldBe(Condition.clickable);
         $(ADD_TO_CART_BUTTON_QUICK_ORDER_FORM).click();
     }
 
@@ -99,7 +105,7 @@ abstract class OverallPage {
     }
 
     public Boolean checkMessageForPartNumber(){
-        String expectedMessage = "Invalid part number";
+        String expectedMessage = "Unlisted part number";
         $(ERROR_MESSAGE_IN_FORM_PART_NUMBER).shouldBe(Condition.visible);
         if($(ERROR_MESSAGE_IN_FORM_PART_NUMBER).exists()){
             String actualMessage = $(ERROR_MESSAGE_IN_FORM_PART_NUMBER).getText();

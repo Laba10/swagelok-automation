@@ -1,15 +1,14 @@
 package com.swagelok.pages;
 
-import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.SelenideElement;
 import com.swagelok.models.QuickOrderProduct;
 
 import java.io.File;
 import java.util.ArrayList;
 
+import static com.codeborne.selenide.Condition.visible;
 import static com.codeborne.selenide.Selenide.*;
-import static com.swagelok.page_elements.PopupPageElements.ADD_TO_CART_POPUP_XPATH;
-import static com.swagelok.page_elements.PopupPageElements.MESSAGE_SUCCESSFULLY_ADDED_PRODUCTS_XPATH;
+import static com.swagelok.page_elements.PopupPageElements.*;
 import static com.swagelok.page_elements.QuickOrderPageElements.*;
 
 public class QuickOrderPage extends OverallPage {
@@ -30,7 +29,7 @@ public class QuickOrderPage extends OverallPage {
     }
 
     public void addToCart(){
-        $(ADD_TO_CART_BUTTON_XPATH).shouldBe(Condition.visible);
+        $(ADD_TO_CART_BUTTON_XPATH).shouldBe(visible);
         $(ADD_TO_CART_BUTTON_XPATH).click();
     }
 
@@ -40,7 +39,7 @@ public class QuickOrderPage extends OverallPage {
 
     public Boolean checkAddToCartPopup(){
         Boolean addToCartPopupAppeared;
-        $(ADD_TO_CART_POPUP_XPATH).shouldBe(Condition.visible);
+        $(POPUP_WINDOW_XPATH).shouldBe(visible);
         if($(ADD_TO_CART_POPUP_XPATH).isDisplayed()){
             addToCartPopupAppeared = true;
         } else {
@@ -51,7 +50,7 @@ public class QuickOrderPage extends OverallPage {
     }
 
     public String countOfSuccessfullyAddedProducts(){
-        $(MESSAGE_SUCCESSFULLY_ADDED_PRODUCTS_XPATH).shouldBe(Condition.visible);
+        $(MESSAGE_SUCCESSFULLY_ADDED_PRODUCTS_XPATH).shouldBe(visible);
         String message = $(MESSAGE_SUCCESSFULLY_ADDED_PRODUCTS_XPATH).getText();
         String actual = message.substring(0,1);
         return actual;
@@ -101,6 +100,12 @@ public class QuickOrderPage extends OverallPage {
 
     public void addToCartBulkFile(){
         $(ADD_TO_CART_BULK_XPATH).click();
+        if ($(CONFIRMATION_FILE_UPLOADING_XPATH).isDisplayed()){
+            $(ADD_TO_CART_BULK_XPATH).click();
+            $(POPUP_WINDOW_XPATH).shouldBe(visible);
+        }else {
+            System.out.println("No confirmation message about succesfull bulk uploading");
+        }
     }
 
     public void populateDataOnQuickOrderPage(ArrayList<QuickOrderProduct> listProducts){

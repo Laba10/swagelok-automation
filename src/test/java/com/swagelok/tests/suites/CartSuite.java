@@ -1,20 +1,25 @@
 package com.swagelok.tests.suites;
 
-import com.codeborne.selenide.junit.ScreenShooter;
+//import com.codeborne.selenide.junit.ScreenShooter;
+
+import com.codeborne.selenide.junit5.ScreenShooterExtension;
 import com.swagelok.models.QuickOrderProduct;
 import com.swagelok.tests.steps.CartPageSteps;
 import com.swagelok.tests.steps.LoginPageSteps;
 import com.swagelok.utils.DriverFactory;
 import org.junit.*;
+import org.junit.jupiter.api.extension.ExtendWith;
 
 import java.util.ArrayList;
 
 import static com.codeborne.selenide.WebDriverRunner.closeWebDriver;
 
+@ExtendWith({ScreenShooterExtension.class})
 public class CartSuite{
 
-    @Rule
-    public ScreenShooter screenShooter = ScreenShooter.failedTests();
+
+//    @RegisterExtension
+//    static ScreenShooterExtension screenshotEmAll = new ScreenShooterExtension(true).to("target/screenshots");
 
 
     @BeforeClass

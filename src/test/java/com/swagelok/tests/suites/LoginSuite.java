@@ -1,20 +1,22 @@
 package com.swagelok.tests.suites;
 
-import com.codeborne.selenide.junit.ScreenShooter;
+
+
+import com.codeborne.selenide.junit5.ScreenShooterExtension;
 import com.swagelok.pages.LoginPage;
 import com.swagelok.tests.steps.LoginPageSteps;
 import com.swagelok.utils.DriverFactory;
 import com.swagelok.utils.EnvFactory;
 import org.junit.*;
+import org.junit.jupiter.api.extension.ExtendWith;
+import org.junit.jupiter.api.extension.RegisterExtension;
 
 import static com.codeborne.selenide.WebDriverRunner.closeWebDriver;
 
-
+@ExtendWith({ScreenShooterExtension.class})
 public class LoginSuite {
 
-    @Rule
-    public ScreenShooter screenShooter = ScreenShooter.failedTests();
-
+    @RegisterExtension
     private String homeUrl = EnvFactory.getMainUrl();
 
 
@@ -28,6 +30,7 @@ public class LoginSuite {
     @Test
     public void swagelokLogin(){
         String email = "automation01@zaelab.com";
+//        String email = "oleh.laba@zaelab.com";
         String pass = "12341234";
 
         LoginPageSteps loginPageSteps = new LoginPageSteps();
@@ -42,6 +45,7 @@ public class LoginSuite {
     @Test
     public void loginWithSelectionSSC(){
         String email = "automation03@zaelab.com";
+//        String email = "oleh.laba@zaelab.com";
         String pass = "12341234";
 
         LoginPageSteps loginPageSteps = new LoginPageSteps();

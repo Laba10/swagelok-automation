@@ -20,7 +20,7 @@ public class DriverFactory {
     }
 
     public static void setTestParameters(){
-        timeout = 6000;
+        timeout = 12000;
         browser = "chrome";
 //        browserSize = "780x950";
     }

@@ -1,5 +1,6 @@
 package com.swagelok.page_elements;
 
+
 import org.openqa.selenium.By;
 
 public class VariantProductDetailsPageElements {

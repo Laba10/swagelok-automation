@@ -1,18 +1,24 @@
 package com.swagelok.tests.suites;
 
-import com.codeborne.selenide.junit.ScreenShooter;
+import com.codeborne.selenide.junit5.ScreenShooterExtension;
 import com.swagelok.pages.LoginPage;
 import com.swagelok.tests.steps.LoginPageSteps;
 import com.swagelok.utils.DriverFactory;
 import com.swagelok.utils.EnvFactory;
-import org.junit.*;
+import org.junit.AfterClass;
+import org.junit.Assert;
+import org.junit.BeforeClass;
+import org.junit.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
+import org.junit.jupiter.api.extension.RegisterExtension;
 
 import static com.codeborne.selenide.WebDriverRunner.closeWebDriver;
 
+@ExtendWith({ScreenShooterExtension.class})
 public class NegativeLoginSuite {
 
-    @Rule
-    public ScreenShooter screenShooter = ScreenShooter.failedTests();
+    @RegisterExtension
+//    static ScreenShooterExtension screenshotEmAll = new ScreenShooterExtension(true).to("target/screenshots");
     private String homeUrl = EnvFactory.getMainUrl();
 
     @BeforeClass
@@ -43,7 +49,7 @@ public class NegativeLoginSuite {
 
         Assert.assertEquals("User is transferred from login page to: '"+link+"'",
                 homeUrl + "login?error=true", link);
-        Assert.assertEquals("Validation message is absent or contains invalid text","Your username or password was incorrect.",message);
+        Assert.assertEquals("Validation message is absent or contains invalid text","Your email or password was incorrect.",message);
     }
 
     @AfterClass

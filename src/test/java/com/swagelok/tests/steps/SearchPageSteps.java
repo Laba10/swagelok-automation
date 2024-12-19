@@ -17,6 +17,7 @@ public class SearchPageSteps {
 
 
     public boolean searchValueInHeaderIsCorrect(String searchValue){
+        searchPage.switchContentToProductListingSearch();
         return searchPage.getTextSearchHeader().contains(searchValue);
     }
 

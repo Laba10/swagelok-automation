@@ -24,6 +24,11 @@ public class RegistrationPage extends OverallPage{
         $(COMPANY_TYPE_INPUT_FIELD_ID).sendKeys(randomUtil.generateRandomPassword(9));
     }
 
+    public static void acceptCaptcha(){
+        $(CAPTCHA_CHECKBOX_XPATH).click();
+    }
+
+
     public void populateOtherJobType(){
         $(JOB_TYPE_OTHER_VALUE_XPATH).click();
         $(JOB_TYPE_INPUT_FIELD_ID).sendKeys(randomUtil.generateRandomPassword(7));

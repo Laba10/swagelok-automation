@@ -1,6 +1,10 @@
 package com.swagelok.tests.steps;
 
 import com.swagelok.pages.LoginPage;
+import com.swagelok.pages.RegistrationPage;
+
+import static com.codeborne.selenide.Selenide.$;
+import static com.swagelok.page_elements.PopupPageElements.ACCEPT_COOKIE_XPATH;
 
 
 abstract class SharedSteps {
@@ -19,7 +23,16 @@ abstract class SharedSteps {
 
     }
 
+    public static void acceptCookie() {
+            $(ACCEPT_COOKIE_XPATH).click();
+            System.out.println("Cookie consent accepted");
+    }
+
     public static void openRegistrationPage(){
         loginPage.openRegistrationPage();
+    }
+
+    public static void passCaptcha(){
+        RegistrationPage.acceptCaptcha();
     }
 }

@@ -1,23 +1,27 @@
 package com.swagelok.tests.suites;
 
-import com.codeborne.selenide.junit.ScreenShooter;
+
+import com.codeborne.selenide.junit5.ScreenShooterExtension;
 import com.swagelok.tests.steps.RegistrationPageSteps;
 import com.swagelok.utils.DriverFactory;
 import com.swagelok.utils.EnvFactory;
 import org.junit.*;
+import org.junit.jupiter.api.extension.RegisterExtension;
 
 import static com.codeborne.selenide.WebDriverRunner.*;
 
 public class RegistrationSuite {
 
-    @Rule
-    public ScreenShooter screenShooter = ScreenShooter.failedTests();
+    @RegisterExtension
+    static ScreenShooterExtension screenshotEmAll = new ScreenShooterExtension(true).to("target/screenshots");
     private String homeUrl = EnvFactory.getMainUrl();
 
     @BeforeClass
     public static void openRegistrationPage(){
         DriverFactory.setTestParameters();
         RegistrationPageSteps.openRegistrationPage();
+        RegistrationPageSteps.acceptCookie();
+        RegistrationPageSteps.passCaptcha();
     }
 
     @Test

@@ -13,18 +13,23 @@ public class SearchPage extends OverallPage{
     }
 
     public boolean tabPresence(){
-        boolean[] tabs = new boolean[4];
-        tabs[0] = $(SEARCH_PAGE_PRODUCTS_TAB_XPATH).exists();
-        tabs[1] = $(SEARCH_PAGE_CONTENT_TAB_XPATH).exists();
-        tabs[2] = $(SEARCH_PAGE_DOWNLOADS_TAB_XPATH).exists();
-        tabs[3] = $(SEARCH_PAGE_LOCAL_TAB_XPATH).exists();
+        boolean[] tabs = new boolean[2];
+        tabs[0] = $(SEARCH_PAGE_RESULTS_TAB_XPATH).exists();
+        tabs[1] = $(SEARCH_PAGE_LOCAL_RESULTS_TAB_XPATH).exists();
 
-        for (int i = 0; i < 4; i++){
+        for (int i = 0; i < 2; i++){
             if(tabs[i] == false){
            return false;
             }
         }
     return true;
+    }
+
+    public void switchContentToProductListingSearch(){
+        $(SEARCH_PAGE_SWITCH_CONTENT_TO_PRODUCT_RESULTS_XPATH).click();
+        if (getLink().contains("searchType=PRODUCT")){
+            System.out.println("Content search is switched to Product");
+        }
     }
 
     public String[] getListOfBaseProductsOnTheSearch(){

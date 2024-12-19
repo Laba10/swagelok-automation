@@ -20,6 +20,7 @@ public class RegistrationPageSteps extends  SharedSteps{
         return message;
     }
 
+
     public void populateFieldsWithOtherValues(){
         registrationPage.populateOtherCompanyType();
         registrationPage.populateOtherJobType();

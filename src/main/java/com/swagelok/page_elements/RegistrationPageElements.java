@@ -28,7 +28,7 @@ public static final By SSC_SELECT_CENTER_BUTTON_XPATH = By.xpath("//button[@data
 public static final By PRIVACY_POLICY_CHECKBOX_XPATH = By.xpath("//label[@for='privacyPolicyCheckbox']");
 public static final By TERMS_AND_CONDS_CHECKBOX_XPATH = By.xpath("//label[@for='termsConditionsCheckbox']");
 public static final By COOKIE_CHECKBOX_XPATH = By.xpath("//label[@for='cookiePolicyCheckbox']");
-public static final By CAPTCHA_CHECKBOX_XPATH = By.xpath("//span[@id='recaptcha-anchor']");
+public static final By CAPTCHA_CHECKBOX_XPATH = By.xpath("//div[@class='recaptcha-checkbox-checkmark']");
 public static final By REGISTER_BUTTON_XPATH = By.xpath("//button[contains(text(), 'Register')]");
 
 // Values from drop down list
@@ -36,7 +36,7 @@ public static final By COMPANY_TYPE_FABRICATION_VALUE_XPATH = By.xpath("//option
 public static final By COMPANY_TYPE_OTHER_VALUE_XPATH = By.xpath("//select[@id='register.companyType']/option[@value='other']");
 public static final By JOB_TYPE_EDUCATION_VALUE_XPATH = By.xpath("//option[@value='education']");
 public static final By JOB_TYPE_OTHER_VALUE_XPATH = By.xpath("//select[@id='register.title']/option[@value='other']");
-public static final By INDUSTRY_CHECKBOX_VALUE_XPATH = By.xpath("//label[@for='biopharmaceutical']");
+public static final By INDUSTRY_CHECKBOX_VALUE_XPATH = By.xpath("//label[@for='oil_gas']");
 public static final By INDUSTRY_CHECKBOX_OTHER_VALUE_XPATH = By.xpath("//label[@for='other']");
 public static final By COUNTRY_US_VALUE_XPATH = By.xpath("//option[@value='US']");
 
