@@ -109,7 +109,7 @@ public class QuickOrderPage extends OverallPage {
     }
 
     public void populateDataOnQuickOrderPage(ArrayList<QuickOrderProduct> listProducts){
-
+        sleep(500);
         for(int i= 0; i < listProducts.size(); i++){
             QuickOrderProduct productRow = listProducts.get(i);
             int row = i + 4;

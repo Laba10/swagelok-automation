@@ -78,6 +78,7 @@ abstract class OverallPage {
 
     public void populateDataInQuickOrderForm(ArrayList<QuickOrderProduct> listProducts){
         $(ADD_TO_CART_WINDOW_XPATH).shouldBe(Condition.visible);
+        sleep(500);
         for(int i= 0; i < listProducts.size(); i++){
                 QuickOrderProduct productRow = listProducts.get(i);
                 SelenideElement e = $$(QUICK_ORDER_FORM_ROW_XPATH).get(i);
